@@ -84,6 +84,7 @@
       isPending = true;
       setTimeout(() => {
         let values = getValues();
+        console.log(values);
         if (values != null) {
           lastValues = values;
           let api = `https://v6.exchangerate-api.com/v6/${key}/pair/${values.first}/${values.second}/${values.amount}`;
@@ -143,36 +144,39 @@
 
   // проверяет произошли ли изменения в полях ввода
   // сверяя с предыдущими значениями
-  function changesDetected() {
+  function changesDetected(newValues) {
     return (
-      firstInput.value != lastValues.first ||
-      secondInput.value != lastValues.second ||
-      amount != lastValues.amount
+      newValues.first != lastValues.first ||
+      newValues.second != lastValues.second ||
+      newValues.amount != lastValues.amount
     );
   }
 
-  // возвращает значения для запроса
+  // возвращает параметры для запроса
   // первый код второй код и сумма валюты
   // если все поля корректно введены
   // и ввод не равен предыдущему вводу
   function getValues() {
-    if (isInputsValid() && changesDetected()) {
+    if (isInputsValid()) {
+      var newValues = null;
       if (isFirst) {
-        return {
+        newValues = {
           first: firstInput.value,
           second: secondInput.value,
           amount: amount,
         };
       } else {
-        return {
+        newValues = {
           first: secondInput.value,
           second: firstInput.value,
           amount: amount,
         };
       }
-    } else {
-      return null;
+      if (changesDetected(newValues)) {
+        return newValues;
+      }
     }
+    return null;
   }
 
   // проверяет корректность полей ввода
