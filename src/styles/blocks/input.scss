@@ -1,0 +1,23 @@
+.input {
+  // border-radius: 20px;
+  padding: 5px 0;
+  text-align: center;
+  font-family: some-font;
+  font-size: 15px;
+  font-weight: bold;
+  color: $white-transparent;
+  transition: 0.5s;
+  // border: 3px solid transparent;
+
+  &::placeholder {
+    text-transform: uppercase;
+  }
+
+//   &:focus {
+//     background-color: $gray-saturate;
+//   }
+
+  &--active {
+    background-color: $gray-saturate;
+  }
+}

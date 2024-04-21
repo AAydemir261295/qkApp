@@ -1,0 +1,21 @@
+@import "./styles/mixins.scss";
+@import "./styles/fonts.scss";
+@import "./styles/variables.scss";
+@import "./styles/blocks/input.scss";
+
+html {
+  display: table;
+  height: 100%;
+  width: 100%;
+  background-color: $gray;
+  overflow: hidden;
+  font-family: some-font;
+}
+
+body {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
