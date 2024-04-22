@@ -25,7 +25,7 @@
     if (value.length > 15) {
       return true;
     } else {
-      showErrorAnime();
+      showError();
     }
   }
 
@@ -40,11 +40,18 @@
     }, 500);
   }
 
-  function showErrorAnime() {
+  function showError() {
     errorMsg = "min-length is 15";
     setTimeout(() => {
       errorContainer.style.opacity = 1;
     }, 1);
+  }
+
+  function hideError() {
+    errorContainer.style.opacity = 0;
+    setTimeout(() => {
+      errorMsg = "";
+    }, 700);
   }
 
   function setActive(ele) {
@@ -80,9 +87,7 @@
         type="text"
         placeholder="api key"
         bind:this={apiKeyInput}
-        on:input={(e) => {
-          errorMsg = "";
-        }}
+        on:input={(e) => hideError()}
         on:click={() => setActive(apiKeyInput)}
       />
       {#if errorMsg}
@@ -149,7 +154,7 @@
       border-radius: 20px;
       text-transform: uppercase;
       color: $red;
-      transition: 0.4s;
+      transition: 0.7s;
       opacity: 0;
     }
   }
