@@ -1,3 +1,5 @@
+Цель задачи освоение нового материала.
+
 GH-PAGES
 
 https://aaydemir261295.github.io/qkApp/
